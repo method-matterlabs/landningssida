@@ -1,0 +1,14 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(node -e \"require.resolve\\('playwright'\\)\")",
+      "Bash(npx --no-install playwright --version)",
+      "Read(//c/Users/Isabe/AppData/Local/Temp/claude/c--Seidr-Landningssida/7e91eb46-b493-4ab2-aed7-5d414dffae85/scratchpad/**)",
+      "Bash(sed 's#PAGEURL#http://localhost:8123/index.html#' open_menu.html)",
+      "Bash(sed 's#PAGEURL#http://localhost:8123/about.html#' open_menu.html)",
+      "Bash(cp \"/c/Users/Isabe/AppData/Local/Temp/claude/c--Seidr-Landningssida/7e91eb46-b493-4ab2-aed7-5d414dffae85/scratchpad/open_index.html\" \"/c/Seidr-Landningssida/__test_open_index.html\")",
+      "Bash(cp \"/c/Users/Isabe/AppData/Local/Temp/claude/c--Seidr-Landningssida/7e91eb46-b493-4ab2-aed7-5d414dffae85/scratchpad/open_about.html\" \"/c/Seidr-Landningssida/__test_open_about.html\")",
+      "Bash(curl -sf http://localhost:8123/__test_open_index.html -o /dev/null)"
+    ]
+  }
+}

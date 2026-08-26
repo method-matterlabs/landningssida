@@ -1,0 +1,213 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Seidr — Quick Audit</title>
+  <style>
+    body{font-family:Arial,Helvetica,sans-serif;background:#f6f9f6;color:#161616;margin:0;padding:24px}
+    .wrap{max-width:980px;margin:0 auto}
+    h1{font-size:22px}
+    .section{background:#fff;border-radius:12px;padding:18px;margin:14px 0;border:1px solid rgba(0,0,0,0.06)}
+    .q{display:flex;align-items:center;gap:12px;margin:8px 0}
+    label{flex:1}
+    select{width:120px;padding:8px;border-radius:8px;border:1px solid #ddd}
+    .results{background:#fff;padding:16px;border-radius:12px;border:1px solid rgba(0,0,0,0.06);margin-top:18px}
+    .sr-row{display:flex;justify-content:space-between;align-items:center;margin:6px 0}
+    .btn{display:inline-block;padding:10px 14px;border-radius:8px;background:#4fc79a;color:#062;cursor:pointer;border:none}
+    .muted{color:#6b6b6b;font-size:14px}
+    .contact{margin-top:12px}
+    textarea{width:100%;min-height:80px;padding:10px;border:1px solid #ddd;border-radius:8px}
+    .flex{display:flex;gap:12px}
+    @media(max-width:720px){.flex{flex-direction:column}}
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <h1>Seidr — Quick Maturity Audit</h1>
+    <p class="muted">Answer verification/evidence for each prompt. The form converts those answers into a 0–4 maturity score automatically.</p>
+
+    <form id="auditForm">
+
+      <div class="section" style="padding-bottom:10px">
+        <h3>Company metadata (do not score)</h3>
+        <div class="q"><label>Company name</label><input type="text" id="meta_company" placeholder="Company name" style="padding:8px;border-radius:8px;border:1px solid #ddd;width:100%"></div>
+        <div class="q"><label>Registered names</label><input type="text" id="meta_registered" placeholder="Registered name(s)" style="padding:8px;border-radius:8px;border:1px solid #ddd;width:100%"></div>
+        <div class="q"><label>Primary contact email</label><input type="email" id="meta_email" placeholder="email@example.com" style="padding:8px;border-radius:8px;border:1px solid #ddd;width:100%"></div>
+        <div class="q"><label>Legal structure</label>
+          <select id="meta_legal" style="width:220px;padding:8px;border-radius:8px;border:1px solid #ddd">
+            <option value="">(choose)</option>
+            <option>Private</option>
+            <option>Public</option>
+            <option>Non-profit</option>
+            <option>Subsidiary</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="section" data-section="Metadata">
+        <h3>1. Metadata — verification prompts</h3>
+        <div class="q"><label>Registered name(s) present?</label><div><label><input type="radio" name="md_1" value="0"> Absent</label> <label><input type="radio" name="md_1" value="1"> Partial</label> <label><input type="radio" name="md_1" value="2"> Documented</label> <label><input type="radio" name="md_1" value="3"> Operational</label> <label><input type="radio" name="md_1" value="4"> Continuously improved</label></div></div>
+        <div class="q"><label>Legal structure verified?</label><div><label><input type="radio" name="md_2" value="0"> Absent</label> <label><input type="radio" name="md_2" value="1"> Partial</label> <label><input type="radio" name="md_2" value="2"> Documented</label> <label><input type="radio" name="md_2" value="3"> Operational</label> <label><input type="radio" name="md_2" value="4"> Continuously improved</label></div></div>
+        <div class="q"><label>Systems & data sources documented?</label><div><label><input type="radio" name="md_3" value="0"> Absent</label> <label><input type="radio" name="md_3" value="1"> Partial</label> <label><input type="radio" name="md_3" value="2"> Documented</label> <label><input type="radio" name="md_3" value="3"> Operational</label> <label><input type="radio" name="md_3" value="4"> Continuously improved</label></div></div>
+      </div>
+
+      <div class="section" data-section="Intention">
+        <h3>2. Intention</h3>
+        <div class="q"><label>Owners' directives stated?</label><div><label><input type="radio" name="in_1" value="0"> Absent</label> <label><input type="radio" name="in_1" value="1"> Partial</label> <label><input type="radio" name="in_1" value="2"> Documented</label> <label><input type="radio" name="in_1" value="3"> Operational</label> <label><input type="radio" name="in_1" value="4"> Continuously improved</label></div></div>
+        <div class="q"><label>Vision & mission clarity?</label><div><label><input type="radio" name="in_2" value="0"> Absent</label> <label><input type="radio" name="in_2" value="1"> Partial</label> <label><input type="radio" name="in_2" value="2"> Documented</label> <label><input type="radio" name="in_2" value="3"> Operational</label> <label><input type="radio" name="in_2" value="4"> Continuously improved</label></div></div>
+        <div class="q"><label>Strategic priorities explicit?</label><div><label><input type="radio" name="in_3" value="0"> Absent</label> <label><input type="radio" name="in_3" value="1"> Partial</label> <label><input type="radio" name="in_3" value="2"> Documented</label> <label><input type="radio" name="in_3" value="3"> Operational</label> <label><input type="radio" name="in_3" value="4"> Continuously improved</label></div></div>
+      </div>
+
+      <div class="section" data-section="Value Creation">
+        <h3>3. Value Creation</h3>
+        <div class="q"><label>Offerings defined?</label><div><label><input type="radio" name="vc_1" value="0"> Absent</label> <label><input type="radio" name="vc_1" value="1"> Partial</label> <label><input type="radio" name="vc_1" value="2"> Documented</label> <label><input type="radio" name="vc_1" value="3"> Operational</label> <label><input type="radio" name="vc_1" value="4"> Continuously improved</label></div></div>
+        <div class="q"><label>Customer needs understood?</label><div><label><input type="radio" name="vc_2" value="0"> Absent</label> <label><input type="radio" name="vc_2" value="1"> Partial</label> <label><input type="radio" name="vc_2" value="2"> Documented</label> <label><input type="radio" name="vc_2" value="3"> Operational</label> <label><input type="radio" name="vc_2" value="4"> Continuously improved</label></div></div>
+        <div class="q"><label>Value streams mapped?</label><div><label><input type="radio" name="vc_3" value="0"> Absent</label> <label><input type="radio" name="vc_3" value="1"> Partial</label> <label><input type="radio" name="vc_3" value="2"> Documented</label> <label><input type="radio" name="vc_3" value="3"> Operational</label> <label><input type="radio" name="vc_3" value="4"> Continuously improved</label></div></div>
+      </div>
+
+      <div class="section" data-section="Enablement">
+        <h3>4. Enablement</h3>
+        <div class="q"><label>Capabilities (skills)?</label><div><label><input type="radio" name="en_1" value="0"> Absent</label> <label><input type="radio" name="en_1" value="1"> Partial</label> <label><input type="radio" name="en_1" value="2"> Documented</label> <label><input type="radio" name="en_1" value="3"> Operational</label> <label><input type="radio" name="en_1" value="4"> Continuously improved</label></div></div>
+        <div class="q"><label>Processes & standards?</label><div><label><input type="radio" name="en_2" value="0"> Absent</label> <label><input type="radio" name="en_2" value="1"> Partial</label> <label><input type="radio" name="en_2" value="2"> Documented</label> <label><input type="radio" name="en_2" value="3"> Operational</label> <label><input type="radio" name="en_2" value="4"> Continuously improved</label></div></div>
+        <div class="q"><label>Technology & data readiness?</label><div><label><input type="radio" name="en_3" value="0"> Absent</label> <label><input type="radio" name="en_3" value="1"> Partial</label> <label><input type="radio" name="en_3" value="2"> Documented</label> <label><input type="radio" name="en_3" value="3"> Operational</label> <label><input type="radio" name="en_3" value="4"> Continuously improved</label></div></div>
+      </div>
+
+      <div class="section" data-section="Stability">
+        <h3>5. Stability</h3>
+        <div class="q"><label>Financial stability?</label><div><label><input type="radio" name="st_1" value="0"> Absent</label> <label><input type="radio" name="st_1" value="1"> Partial</label> <label><input type="radio" name="st_1" value="2"> Documented</label> <label><input type="radio" name="st_1" value="3"> Operational</label> <label><input type="radio" name="st_1" value="4"> Continuously improved</label></div></div>
+        <div class="q"><label>Operational stability?</label><div><label><input type="radio" name="st_2" value="0"> Absent</label> <label><input type="radio" name="st_2" value="1"> Partial</label> <label><input type="radio" name="st_2" value="2"> Documented</label> <label><input type="radio" name="st_2" value="3"> Operational</label> <label><input type="radio" name="st_2" value="4"> Continuously improved</label></div></div>
+        <div class="q"><label>Crisis readiness?</label><div><label><input type="radio" name="st_3" value="0"> Absent</label> <label><input type="radio" name="st_3" value="1"> Partial</label> <label><input type="radio" name="st_3" value="2"> Documented</label> <label><input type="radio" name="st_3" value="3"> Operational</label> <label><input type="radio" name="st_3" value="4"> Continuously improved</label></div></div>
+      </div>
+
+      <div class="results" id="results">
+        <div class="sr-row"><strong>Metadata:</strong><span id="r-Metadata">—</span></div>
+        <div class="sr-row"><strong>Intention:</strong><span id="r-Intention">—</span></div>
+        <div class="sr-row"><strong>Value Creation:</strong><span id="r-Value\ Creation">—</span></div>
+        <div class="sr-row"><strong>Enablement:</strong><span id="r-Enablement">—</span></div>
+        <div class="sr-row"><strong>Stability:</strong><span id="r-Stability">—</span></div>
+        <div class="sr-row" style="margin-top:12px;border-top:1px dashed #eee;padding-top:12px"><strong>Overall (avg):</strong><span id="r-overall">—</span></div>
+        <div style="margin-top:8px"><em class="muted">Maturity level:</em> <strong id="maturity">—</strong></div>
+
+        <div class="snapshot-divider" style="margin-top:12px"></div>
+
+        <div class="contact">
+          <label style="display:block;font-weight:700;margin-bottom:8px">Would you like a deeper analysis?</label>
+          <div class="flex">
+            <label class="muted"><input type="checkbox" id="wantContact"> Yes — request a follow-up</label>
+            <div style="flex:1"></div>
+            <button type="button" class="btn" id="copyBtn">Copy snapshot</button>
+          </div>
+
+          <div id="contactForm" style="display:none;margin-top:12px">
+            <input type="text" id="name" placeholder="Your name" style="padding:10px;border-radius:8px;border:1px solid #ddd;width:100%;margin-bottom:8px">
+            <input type="email" id="email" placeholder="Email" style="padding:10px;border-radius:8px;border:1px solid #ddd;width:100%;margin-bottom:8px">
+            <textarea id="message" placeholder="Optional message"></textarea>
+            <div style="margin-top:10px;display:flex;gap:8px">
+              <button type="button" class="btn" id="sendMail">Request analysis</button>
+              <button type="button" class="btn" id="downloadCsv">Download CSV</button>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </form>
+
+    <p class="muted" style="margin-top:18px">This quick audit is based on our internal maturity framework. Use the snapshot to prioritise next steps or request a deeper, human-led analysis.</p>
+  </div>
+
+  <script>
+    const maturityText = v=>{
+      if(v<0.5) return 'Absent';
+      if(v<1.5) return 'Partial';
+      if(v<2.5) return 'Defined';
+      if(v<3.5) return 'Embedded';
+      return 'Adaptive';
+    }
+
+    function compute(){
+      const sections = document.querySelectorAll('.section[data-section]');
+      const sectionResults = {};
+      sections.forEach(sec=>{
+        const name = sec.getAttribute('data-section');
+        const qs = sec.querySelectorAll('.q');
+        let sum=0; let count=0;
+        qs.forEach(q=>{
+          const checked = q.querySelector('input[type="radio"]:checked');
+          const val = checked ? Number(checked.value) : 0;
+          sum += val; count++;
+        });
+        const avg = count? (sum/count) : 0;
+        sectionResults[name]=Math.round(avg*100)/100;
+      });
+      // update UI
+      document.getElementById('r-Metadata').textContent = sectionResults['Metadata'] ?? '—';
+      document.getElementById('r-Intention').textContent = sectionResults['Intention'] ?? '—';
+      document.getElementById('r-Value\\ Creation').textContent = sectionResults['Value Creation'] ?? '—';
+      document.getElementById('r-Enablement').textContent = sectionResults['Enablement'] ?? '—';
+      document.getElementById('r-Stability').textContent = sectionResults['Stability'] ?? '—';
+      const vals = Object.values(sectionResults);
+      const overall = vals.length? Math.round((vals.reduce((a,b)=>a+b,0)/vals.length)*100)/100 : 0;
+      document.getElementById('r-overall').textContent = overall;
+      document.getElementById('maturity').textContent = maturityText(overall);
+      return {sectionResults, overall}
+    }
+
+    // recompute when any radio or metadata input changes
+    document.querySelectorAll('input[type="radio"]').forEach(i=>i.addEventListener('change',compute));
+    document.querySelectorAll('#meta_company,#meta_registered,#meta_email,#meta_legal').forEach(i=>i.addEventListener('change',compute));
+    compute();
+
+    document.getElementById('wantContact').addEventListener('change', e=>{
+      document.getElementById('contactForm').style.display = e.target.checked? 'block':'none';
+    });
+
+    document.getElementById('copyBtn').addEventListener('click', ()=>{
+      const {sectionResults, overall} = compute();
+      const company = document.getElementById('meta_company').value || '—';
+      const reg = document.getElementById('meta_registered').value || '—';
+      const contact = document.getElementById('meta_email').value || '—';
+      const legal = document.getElementById('meta_legal').value || '—';
+      let text = `Seidr Quick Audit Snapshot for ${company}\n\n`;
+      text += `Registered names: ${reg}\nLegal structure: ${legal}\nContact: ${contact}\n\n`;
+      for(const k in sectionResults) text += `${k}: ${sectionResults[k]}\n`;
+      text += `Overall: ${overall} (${maturityText(overall)})\n`;
+      navigator.clipboard.writeText(text).then(()=>alert('Snapshot copied to clipboard'))
+    });
+
+    document.getElementById('sendMail').addEventListener('click', ()=>{
+      const requester = document.getElementById('name').value || '—';
+      const requesterEmail = document.getElementById('email').value || '—';
+      const msg = document.getElementById('message').value || '';
+      const {sectionResults, overall} = compute();
+      const company = document.getElementById('meta_company').value || '—';
+      const reg = document.getElementById('meta_registered').value || '—';
+      const contact = document.getElementById('meta_email').value || '—';
+      const legal = document.getElementById('meta_legal').value || '—';
+      let body = `Requester: ${requester}%0D%0ARequester email: ${requesterEmail}%0D%0A%0D%0A`;
+      body += `Company: ${company}%0D%0ARegistered: ${reg}%0D%0ALegal: ${legal}%0D%0AContact: ${contact}%0D%0A%0D%0A`;
+      body += 'Quick audit snapshot:%0D%0A';
+      for(const k in sectionResults) body += `${k}: ${sectionResults[k]}%0D%0A`;
+      body += `%0D%0AOverall: ${overall} (${maturityText(overall)})%0D%0A%0D%0AMessage:%0D%0A${encodeURIComponent(msg)}`;
+      const mailto = `mailto:hello@seidr.com?subject=Audit%20Request%20(${encodeURIComponent(company)})&body=${body}`;
+      window.location.href = mailto;
+    });
+
+    document.getElementById('downloadCsv').addEventListener('click', ()=>{
+      const {sectionResults, overall} = compute();
+      const company = document.getElementById('meta_company').value || '';
+      const reg = document.getElementById('meta_registered').value || '';
+      const contact = document.getElementById('meta_email').value || '';
+      const legal = document.getElementById('meta_legal').value || '';
+      let csv = 'company,registered,contact,legal\n';
+      csv += `"${company}","${reg}","${contact}","${legal}"\n\n`;
+      csv += 'section,score\n';
+      for(const k in sectionResults) csv += `"${k}",${sectionResults[k]}\n`;
+      csv += `Overall,${overall}\n`;
+      const blob = new Blob([csv],{type:'text/csv'});
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement('a'); a.href = url; a.download = 'seidr-audit-snapshot.csv'; document.body.appendChild(a); a.click(); a.remove(); URL.revokeObjectURL(url);
+    });
+  </script>
+</body>
+</html>
