@@ -20,8 +20,21 @@
     --sun:#eefb54;
     --flare:#d93328;
     --flare-light:#fdb5b3;
-    --max-w:1440px;
+    --max-w:1180px;
   }
+
+  @media (min-width: 1500px){
+  :root{
+    --max-w:1360px; /* börjar växa lite på bredare skärmar */
+  }
+}
+
+@media (min-width: 1800px){
+  :root{
+    --max-w:1560px; /* mer luft fylld på riktigt breda/stora monitorer */
+  }
+}
+
   *{box-sizing:border-box;}
   html{scroll-behavior:smooth;}
   body{
