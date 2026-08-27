@@ -215,11 +215,11 @@
           <li><a href="/" data-scroll-target="platform-section">Platform</a></li>
           <li><a href="/" data-scroll-target="risk-action">Governance &amp; Risk</a></li>
           <li><a href="/" data-scroll-target="how">How it Works</a></li>
-          <li><a href="about.html" class="current">About</a></li>
+          <li><a href="/about/" class="current">About</a></li>
         </ul>
       </nav>
       <button class="hamburger" aria-label="Open menu" onclick="toggleMobileNav(event)"><span class="bar"></span></button>
-      <a href="index.html#contact" class="nav-cta" onclick="openAuditModal();return false;">Request an Governance Audit →</a>
+      <a href="/#contact" class="nav-cta" onclick="openAuditModal();return false;">Request an Governance Audit →</a>
     </div>
   </div>
 </header>
@@ -229,10 +229,10 @@
   <div class="mobile-inner">
     <button class="mobile-close" onclick="closeMobileNav()">✕</button>
     <ul>
-      <li><a href="index.html#platform-section" onclick="closeMobileNav()">Platform</a></li>
-      <li><a href="index.html#risk-action" onclick="closeMobileNav()">Governance &amp; Risk</a></li>
-      <li><a href="index.html#how" onclick="closeMobileNav()">How it Works</a></li>
-      <li><a href="about.html" onclick="closeMobileNav()">About</a></li>
+      <li><a href="/#platform-section" onclick="closeMobileNav()">Platform</a></li>
+      <li><a href="/#risk-action" onclick="closeMobileNav()">Governance &amp; Risk</a></li>
+      <li><a href="/#how" onclick="closeMobileNav()">How it Works</a></li>
+      <li><a href="/about/" onclick="closeMobileNav()">About</a></li>
     </ul>
     <a href="#" class="nav-cta mobile-cta" onclick="closeMobileNav();openAuditModal();return false;">Request a Governance Audit →</a>
   </div>
@@ -314,7 +314,7 @@
     <p>We're a small team — if you reach out, one of us will actually answer.</p>
     <div class="cta-final-ctas">
       <a href="mailto:isabelle@sei-dr.com" class="btn btn-primary">Email the Team</a>
-      <a href="index.html#contact" class="btn btn-ghost" onclick="openAuditModal();return false;">Request an Audit</a>
+      <a href="/#contact" class="btn btn-ghost" onclick="openAuditModal();return false;">Request an Audit</a>Request an Audit</a>
     </div>
   </div>
 </section>
@@ -597,7 +597,7 @@ Overall: ${avg.toFixed(1)}/4 (${overallLabel})`;
   function showThanks(){ document.getElementById('audit-contact-view').style.display = 'none'; document.getElementById('audit-thanks-view').classList.add('show'); }
   function mailtoFallback(){
     const body = `Name: ${name}\nEmail: ${email}\nCompany: ${company}\nCompany size: ${size}\nUsing AI already: ${agents}\nWhat's pulling them out of sync: ${concerns}\n\n${snapshotText}\n\nAdditional notes: ${notes || '—'}`;
-    window.location.href = `mailto:hello@seidr.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+    window.location.href = `mailto:isabelle@sei-dr.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
     showThanks();
   }
 
